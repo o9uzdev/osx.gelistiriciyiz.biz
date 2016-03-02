@@ -1,0 +1,6 @@
+/.bundle
+/build
+/.sass-cache
+vendor/bundle
+creds.rb
+/bin

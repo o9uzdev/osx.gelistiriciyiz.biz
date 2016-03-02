@@ -1,0 +1,20 @@
+---
+pageable: true
+per_page: 10
+---
+
+<article class="container tags">
+    <section class="index">
+        <h1><span><%= tagname %></span> etiketiyle <span><%= articles.count %></span> kayıt bulunuyor.</h1>
+    </section>
+
+    <%= partial "partials/list_posts", :locals => {
+        :page_articles => page_articles,
+    } %>
+    
+    <%= partial "partials/pagination", :locals => {
+        :prev_page => prev_page,
+        :next_page => next_page,
+        :num_pages => num_pages
+    } %>
+</article>

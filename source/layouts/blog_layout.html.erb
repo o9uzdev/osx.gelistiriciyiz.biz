@@ -1,0 +1,66 @@
+<% wrap_layout :layout do %>
+    <% if current_page.metadata[:page]["cover"] %>
+    <div class="article-cover">
+        <div>
+            <%
+            if current_page.metadata[:page]["cover"].include?("http")
+                image_src = current_page.metadata[:page]["cover"]
+            else
+                image_src = "posts/#{current_page.metadata[:page]["cover"]}"
+            end
+            %>
+            <%= image_tag image_src, :class => "image" %>
+        </div>
+    </div>
+    <% end %>
+    
+    <%
+    author_name = site[:main_author][:name]
+    author_email = site[:main_author][:email]
+    author_link = site[:main_author][:link]
+    author_bio = site[:main_author][:bio]
+    
+    if current_page.metadata[:page]["author"]
+        author_name = current_page.metadata[:page]["author"]["name"] if current_page.metadata[:page]["author"]["name"]
+        author_email = current_page.metadata[:page]["author"]["email"] if current_page.metadata[:page]["author"]["email"]
+        author_link = current_page.metadata[:page]["author"]["link"] if current_page.metadata[:page]["author"]["link"]
+        author_bio = current_page.metadata[:page]["author"]["bio"] if current_page.metadata[:page]["author"]["bio"]
+    end
+    %>
+
+    <article>
+        <div class="container">
+            <header>
+                <div class="meta">
+                    <address><a rel="author" href="<%= author_link %>" title="<%= author_name %>" target="_blank"><%= author_name %></a></address> &mdash;
+                    <time pubdate datetime="<%= current_page.date.xmlschema %>" title="<%= I18n.l current_page.date, :format => "%d %B %Y, %A %H:%M" %>"><%= I18n.l current_page.date, :format => "%d %B %Y, %A %H:%M" %></time>
+                </div>
+                <h1 class="title"><%= current_page.title %></h1>
+                <% if current_page.metadata[:page]["subtitle"] %><h2 class="subtitle"><%= current_page.metadata[:page]["subtitle"] %></h2><% end %>
+                <% if current_page.metadata[:page]["tags"] %>
+                    <div class="tags">
+                        <% current_page.metadata[:page]["tags"].split(",").each do |tag| %>
+                        <span class="badge"><%= link_to tag, tag_path(tag) %></span>
+                        <% end %>
+                    </div>
+                <% end %>
+                
+            </header>
+            
+            <section>
+                <%= yield %>
+            </section>
+
+            <footer>
+                <address>
+                    <img class="avatar" src="<%= gravatar_for(author_email) %>" />
+                    <p>
+                        <strong><a rel="author" href="<%= author_link %>" title="{{ page.author_name }}" target="_blank"><%= author_name %></a></strong><br>
+                        <span class="muted"><%= author_bio %></span>
+                    </p>
+                </address>
+            </footer>
+            <%= partial "partials/disqus" %>
+        </div>
+    </article>
+<% end %>

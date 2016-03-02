@@ -1,0 +1,24 @@
+<article class="container archive">
+    <section class="index">
+        <h1>
+        Arşiv &mdash;
+        <%
+        case page_type
+        when "month"
+        %>
+        <%= I18n.l Date.new(year, month, 1), :format => "%B %Y" %>
+        <%
+        when "year"
+        %>
+        <%= year %>
+        <%
+        end
+        %>
+        &mdash; [ <span><%= articles.count %></span> kayıt ]
+        </h1>
+    </section>
+
+    <%= partial "partials/list_archive", :locals => {
+        :page_articles => page_articles,
+    } %>
+</article>

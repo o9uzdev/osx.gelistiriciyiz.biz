@@ -1,0 +1,22 @@
+site:
+  production_url: "http://osx.gelistiriciyiz.biz"
+  title: "OSX Püf Noktaları"
+  subtitle: "OSX ile ilgili Türkçe püf noktaları"
+  tag_line: "OSX İpuçları"
+  description: "OSX ile ilgili Türkçe püf noktaları"
+  logo: "logo.png"
+  cover_image: "cover.jpg"
+  social:
+    twitter: "osx_tips_tr"
+    facebook: "osxtips"
+  company:
+    name: "Geliştiriciyiz.biz"
+    url: "http://gelistiriciyiz.biz/"
+  product:
+    name: "GELİŞTİRİCİYİZ.BİZ"
+    url: "http://gelistiriciyiz.biz/"
+  main_author:
+    name: "Uğur Özyılmazel"
+    email: "ugurozyilmazel@gmail.com"
+    link: "http://ugur.ozyilmazel.com"
+    bio: "Yazılım Geliştiricisi"

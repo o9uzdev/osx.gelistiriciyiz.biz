@@ -1,0 +1,26 @@
+---
+pageable: true
+per_page: 10
+---
+<div class="blog-cover" style="background-image:url(/<%= images_dir %>/<%= site[:cover_image] %>);">
+    <section>
+        <div class="container">
+            <h1><%= site[:title] %></h1>
+            <% if site[:subtitle] %><h3><%= site[:subtitle] %></h3><% end %>
+            <% if site[:social][:twitter] %><a href="https://twitter.com/<%= site[:social][:twitter] %>" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a><% end %>
+            <% if site[:social][:facebook] %><a href="http://facebook.com/<%= site[:social][:facebook] %>" title="Like on Facebook" target="_blank"><i class="icon icon-facebook"></i></a><% end %>
+            <a href="/feed.xml" title="RSS Feed"><i class="icon icon-rss"></i></a>
+        </div>
+    </section>
+</div>
+
+<article class="container">
+    <%= partial "partials/list_posts", :locals => {
+        :page_articles => page_articles,
+    } %>
+    <%= partial "partials/pagination", :locals => {
+        :prev_page => prev_page,
+        :next_page => next_page,
+        :num_pages => num_pages
+    } %>
+</article>

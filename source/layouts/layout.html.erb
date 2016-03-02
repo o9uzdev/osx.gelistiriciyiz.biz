@@ -1,0 +1,99 @@
+<%
+@html_page_title = current_article.nil? ? "#{site[:title]} &mdash; #{site[:subtitle]}" : "#{current_article.title} &mdash; #{site[:title]}"
+@canonical_url = "#{site[:production_url]}/#{request.path}"
+@open_graph_image = "#{site[:production_url]}/#{images_dir}/#{site[:cover_image]}"
+unless current_article.nil?
+    if current_article.metadata[:page]["cover"]
+        @open_graph_image = "#{site[:production_url]}/#{images_dir}/posts/#{current_article.metadata[:page]["cover"]}"
+    end
+end
+@open_graph_description = config[:site][:description]
+unless current_article.nil?
+    @open_graph_description = Sanitize.clean(current_article.summary).strip.gsub("\n", "") unless current_article.summary.nil?
+end
+%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= @html_page_title %></title>
+    <meta name="title" content="<%= @html_page_title %>">
+    <link rel="canonical" href="<%= @canonical_url %>">
+    <meta property="og:title" content="<%= @html_page_title %>"/>
+    <meta property="og:url" content="<%= @canonical_url %>"/>
+    <meta property="og:image" content="<%= @open_graph_image %>"/>
+    <meta property="og:description" content="<%= @open_graph_description %>"/>
+    <meta name="description" content="<%= @open_graph_description %>"/>
+    <meta property="og:site_name" content="<%= site[:title] %>">
+    <link rel="shortcut icon" href="/<%= images_dir %>/favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/<%= images_dir %>/<%= site[:logo] %>"/>
+    <%= feed_tag :atom, "#{site[:production_url]}/feed.xml", title: "Atom Feed" %>
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,700,300,900&subset=latin,latin-ext" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag 'application' %>
+</head>
+<body>
+    <section class="site-nav">
+        <header>
+            <nav id="navigation">
+                <% if site[:logo] %><a class="brand" href="/"><%= image_tag site[:logo], :alt => "Logo" %></a><% end %>
+                <a href="/" class="home"><%= t('messages.home') %></a>
+                <% if site[:product] %><a href="<%= site[:product][:url] %>"><%= site[:product][:name] %></a><% end %>
+                <a href="/hakkinda/"><%= t('messages.about') %></a>
+                <a href="/arsiv/"><%= t('messages.archive') %></a>
+            </nav>
+
+            <% if site[:tag_line] or site[:product] %>
+            <nav class="tagline hidden-xs">
+                <% if site[:tag_line] %><span><%= site[:tag_line] %></span><% end %>
+                <% if site[:product] %><a href="<%= site[:product][:url] %>" class="btn btn-outline"><%= site[:product][:name] %></a><% end %>
+            </nav>
+            <% end %>
+        </header>
+    </section>
+
+    <%= yield %>
+
+    <footer class="site-footer">
+        <div class="container">
+            <nav>
+                <% if site[:company] %><a href="<%= site[:company][:url] %>"><%= site[:company][:name] %></a> &middot;<% end %>
+                <a href="/"><%= t('messages.home') %></a> &middot;
+                <% if site[:product] %><a href="<%= site[:product][:url] %>"><%= site[:product][:name] %></a> &middot; <% end %>
+                <a href="/hakkinda/"><%= t('messages.about') %></a> &middot;
+                <a href="/arsiv/"><%= t('messages.archive') %></a>
+            </nav>
+        
+            <nav class="social">
+                <% if site[:social][:twitter] %>
+                <a href="https://twitter.com/<%= site[:social][:twitter] %>" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter black"></i></a>
+                <% end %>
+                <% if site[:social][:facebook] %>
+                <a href="http://facebook.com/<%= site[:social][:facebook] %>" title="Follow on Facebook" target="_blank"><i class="icon icon-facebook black"></i></a>
+                <% end %>
+                <a href="/feed.xml" title="RSS Feed"><i class="icon icon-rss black"></i></a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <%= javascript_include_tag 'retina-0.0.2' %>
+    <%= javascript_include_tag 'app' %>
+    <%= yield_content :javascript %>
+    <% unless development? %>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-6463685-43', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script id="dsq-count-scr" src="//osxtipsgelistiriciyizbiz.disqus.com/count.js" async></script>
+    <% end %>
+</body>
+</html>

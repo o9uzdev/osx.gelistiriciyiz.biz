@@ -1,0 +1,13 @@
+<% page_articles.each_with_index do |article, i| %>
+<section class="index">
+    <div>
+        <h2 class="title">
+            <%= link_to article.title, article, :rel => "prefetch", :title => t('messages.click_for_details') %>
+        </h2>
+        <div class="meta">
+            <time pubdate datetime="<%= article.date.xmlschema %>" title="<%= I18n.l article.date, :format => "%d %B %Y, %A %H:%M" %>"><%= I18n.l article.date, :format => "%d %B %Y, %A %H:%M" %></time>
+        </div>
+    </div>
+    <hr>
+</section>
+<% end %>
