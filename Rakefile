@@ -20,14 +20,15 @@ task :deploy do
 end
 
 desc "Yeni yazı ekle"
-task :post, :title do |t, args|
-  title = args[:title] ? args[:title] : "yeni-post"
-  post_file = "source/posts/#{NOW}-#{title.to_url}.md"
-  
+task :post, :post_title, :post_date do |t, args|
+  post_title = args[:post_title] ? args[:post_title] : "yeni-post"
+  post_date = args[:post_date] ? Date.parse(args[:post_date]) : Time.now.strftime("%b %d, %Y %H:%M")
+  post_file = "source/posts/#{NOW}-#{post_title.to_url}.md"
+
   output = []
   output << "---"
-  output << "title: #{title}"
-  output << "date: #{Time.now.strftime("%b %d, %Y %H:%M")}"
+  output << "title: #{post_title}"
+  output << "date: #{post_date}"
   output << "# tags: tag1,tag2"
   output << "# subtitle: "
   output << "# published: false"
@@ -39,5 +40,6 @@ task :post, :title do |t, args|
   output << "#   bio:"
   output << "---"
   File.write post_file, output.join("\n")
+
   puts "Yeni post edit edilmek için hazır: #{post_file}"
 end
