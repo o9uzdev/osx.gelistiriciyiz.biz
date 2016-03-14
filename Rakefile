@@ -30,7 +30,7 @@ task :post, [:post_title, :post_date] do |t, args|
 
   output = []
   output << "---"
-  output << "title: #{post_title}"
+  output << "title: \"#{post_title}\""
   output << "date: #{post_time.strftime(POST_DATE_FORMAT)}"
   output << "# tags: tag1,tag2"
   output << "# subtitle: "
