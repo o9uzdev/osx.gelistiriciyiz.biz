@@ -1,5 +1,5 @@
 ---
-title: Terminal'den Wifi Ağ aramak
+title: "Terminal’den Wifi Ağ aramak"
 date: Mar 07, 2012 09:21
 tags: osx
 ---
