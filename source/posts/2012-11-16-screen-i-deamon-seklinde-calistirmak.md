@@ -3,7 +3,7 @@ title: "`screen`’i deamon şeklinde çalıştırmak"
 date: Nov 16, 2012 16:01
 tags: unix,screen
 ---
-Örneğin; `sass` dinleme işini `screen`e atmak istiyorsunuz?READ_MORE
+Örneğin; `sass` dinleme işini `screen`’e atmak istiyorsunuz?READ_MORE
 
 ```bash
 # screen -dmS SCREEN_ADI CLI KOMUT

@@ -42,6 +42,7 @@ activate :blog do |blog|
   blog.sources = 'posts/{year}-{month}-{day}-{title}.html'
   blog.paginate = true
   blog.layout = "blog_layout"
+  blog.summary_length = nil
   blog.summary_separator = /READ_MORE/
   blog.taglink = "etiket/{tag}.html"
   blog.tag_template = "pages/tag.html"
