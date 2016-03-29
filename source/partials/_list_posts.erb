@@ -12,9 +12,11 @@
     <img class="avatar" src="<%= gravatar_for(author_email) %>" />
     <div>
         <h2 class="title">
-            <%= link_to article.title, article, :rel => "prefetch", :title => t('messages.click_for_details') %>
+            <%= link_to article.title + " &raquo;", article, :rel => "prefetch", :title => t('messages.click_for_details') %>
         </h2>
-        <% unless article.summary.nil? %><%= article.summary %><% end %>
+        <% unless article.summary.nil? %>
+            <%= article.summary %>
+        <% end %>
         <div class="meta">
             <%= t('messages.written_by') %>: <address><%= author_name %></address> &mdash;
             <time pubdate datetime="<%= article.date.xmlschema %>" title="<%= I18n.l article.date, :format => "%d %B %Y, %A %H:%M" %>"><%= I18n.l article.date, :format => "%d %B %Y, %A %H:%M" %></time>

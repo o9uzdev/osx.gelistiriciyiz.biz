@@ -44,6 +44,9 @@ activate :blog do |blog|
   blog.layout = "blog_layout"
   blog.summary_length = nil
   blog.summary_separator = /READ_MORE/
+  # blog.summary_generator = Proc.new do |article, body, length, ellipsis|
+  #   article.default_summary_generator("<pre>#{text}</pre>", length, ellipsis)
+  # end
   blog.taglink = "etiket/{tag}.html"
   blog.tag_template = "pages/tag.html"
   blog.calendar_template = "pages/calendar.html"
