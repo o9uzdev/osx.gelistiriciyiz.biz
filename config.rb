@@ -33,6 +33,12 @@ convert_hash = lambda do |h|
 end
 config[:site] = convert_hash[config_data][:site]
 
+begin
+  custom_config = YAML.load(File.read("config_custom.yaml"))
+  custom_config["main_author"].each{|k,v| config[:site][:main_author][k.to_sym] = v}
+rescue Exception => e
+end
+
 configure :build do
   activate :minify_css
   activate :minify_javascript

@@ -4,3 +4,4 @@
 vendor/bundle
 creds.rb
 /bin
+config_custom.yaml

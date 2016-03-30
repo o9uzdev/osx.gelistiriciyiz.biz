@@ -16,7 +16,7 @@ site:
     name: "GELİŞTİRİCİYİZ.BİZ"
     url: "http://gelistiriciyiz.biz/"
   main_author:
-    name: "Uğur Özyılmazel"
-    email: "ugurozyilmazel@gmail.com"
-    link: "http://ugur.ozyilmazel.com"
-    bio: "Yazılım Geliştiricisi"
+    name: "Full Name"
+    email: "email@example.com"
+    link: "http://example.com"
+    bio: "Title"
