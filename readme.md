@@ -94,9 +94,11 @@ Eğer yazı içinde tıklayınca büyüyecek bir resim koymak isterseniz;
 
 Yeni post yapmak için `rake post` yapmanız yeterli.
 
-    rake post["Yeni yazı"] # ya da
-    bundle exec rake post["Yeni yazı"]
-
+```bash
+rake post["Yeni yazı"]                    # ya da
+bundle exec rake post["Yeni yazı"]        # ya da
+rake post["Yeni yazı","May 5 2016 11:00"] # ya da 5 Mayıs 2016 saat 11:00 için
+```
 
 ## Deployment
 
@@ -104,9 +106,11 @@ Yeni post yapmak için `rake post` yapmanız yeterli.
 Ben `:rsync` yöntemini seçtim. Bu işi sağlıklı yapabilmek için, lütfen 
 root’da `creds.rb` dosyasını oluşturun ve;
 
-    DEPLOY_USER = "kullanıcı_adı"
-    DEPLOY_HOST = "server"
-    DEPLOY_PATH = "/path/to/site"
+```ruby
+DEPLOY_USER = "kullanıcı_adı"
+DEPLOY_HOST = "server"
+DEPLOY_PATH = "/path/to/site"
+```
 
 değişkenlerini tanımlayın. Daha sonra `rake deploy` ya da 
 `bundle exec rake deploy` yaparak statik html’leri sunucuza 
@@ -119,48 +123,52 @@ Site ile ilgili genel değişkenler. Eğer post içinde `author` tanımlaması
 yoksa, bu dosyadı `main_author` ’da bulunan değerler kullanılır tüm
 post’lar için.
 
-    site:
-      production_url: "http://domain"
-      title: "Başlık"
-      subtitle: "Alt Başlık"
-      tag_line: "Mini slogan"
-      description: "Açıklaması"
-      logo: "minik logo"
-      cover_image: "site ana fotoğraf"
-      social:
-        twitter: 
-        facebook:
-      company:
-        name: "FİRMA_ADI"
-        url: "http://firma_web_adresi"
-      product:
-        name: "ÜRÜN_ADI"
-        url: "http://ürün_adresi"
-      main_author:
-        name: "AD-SOYAD"
-        email: "E-POSTA"
-        link: "LİNK"
-        bio: "1 SATIR BİO"
+```yaml
+site:
+  production_url: "http://domain"
+  title: "Başlık"
+  subtitle: "Alt Başlık"
+  tag_line: "Mini slogan"
+  description: "Açıklaması"
+  logo: "minik logo"
+  cover_image: "site ana fotoğraf"
+  social:
+    twitter: 
+    facebook:
+    disqus:
+    google_analytics:
+  company:
+    name: "FİRMA_ADI"
+    url: "http://firma_web_adresi"
+  product:
+    name: "ÜRÜN_ADI"
+    url: "http://ürün_adresi"
+  main_author:
+    name: "AD-SOYAD"
+    email: "E-POSTA"
+    link: "LİNK"
+    bio: "1 SATIR BİO"
+```
 
+## config_custom.yaml
+
+Bu dosya `.gitignore`’dadır ve eğer Pull Request ile katkı yapıyorsanız,
+bu dosyada yazan bilgiler, sizin yaptığınız post’larda kullanılacaktır.
+
+```yaml
+main_author:
+  name: "Uğur Özyılmazel"
+  email: "adsoyad@domain.com"
+  link: "http://ugur.ozyilmazel.com"
+  bio: "Yazılım Geliştiricisi"
+```
 
 ## Güncellemeler
 
-**2016-03-02**
+**2016-04-03**
 
-* Heroku için deploy edebilme konfigürasyonu iptal edildi.
-
-**2015-10-04**
-
-* `rake post` ile otomatik olarak post oluşturma eklendi.
-
-**2015-09-24**
-
-* `logo.png` geldi.
-* Örnek `nginx.conf` geldi.
-* Front-matter değişlenleri açıklandı
-* HTML yardımcıları açıklandı.
-* Deployment açıklandı.
-* `config.yaml` açıklandı.
+* `readme.md` düzenlendi.
+* `config.yaml` için iki yeni değişken: `disqus` ve `google_analytics`
 
 ## Lisans
 
