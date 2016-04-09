@@ -49,3 +49,10 @@ section.archive-list {
         }
     }
 }
+
+.pagination {
+    a.current-page {
+        background-color: #1c699c;
+        color: white;
+    }
+}

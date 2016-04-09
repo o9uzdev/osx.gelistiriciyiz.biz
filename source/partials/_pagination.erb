@@ -2,13 +2,22 @@
     <% if prev_page %>
         <%= link_to "‹ #{t('messages.previous_posts')}", prev_page, :class => "btn btn-outline" %>
     <% end %>
+
     <%
     if num_pages
         (1..num_pages).each do |n|
             if n > 1
-            %>
-            <span class="number-pages hidden-xs"><%= link_to n, "/" + blog.options.page_link.sub("{num}", "#{n}") + "/", :class => "btn btn-outline" %></span>
-            <%
+                need_url = "/" + blog.options.page_link.sub("{num}", "#{n}") + "/"
+                if locals.key?(:tagname)
+                    need_url = "/etiket/#{tagname}/" + blog.options.page_link.sub("{num}", "#{n}") + "/"
+                end
+                link_class = "btn btn-outline"
+                link_class += " current-page" if page_number == n
+                %>
+                <span class="number-pages hidden-xs">
+                    <%= link_to n, need_url, :class => link_class %>
+                </span>
+                <%
             end
         end
     end
