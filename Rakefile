@@ -16,6 +16,12 @@ task :preview do
   system "middleman"
 end
 
+desc "Test için build"
+task :build do
+  system "rm -rf build/"
+  system "middleman build --verbose"
+end
+
 desc "Deploy"
 task :deploy do
   system "rm -rf build/"
