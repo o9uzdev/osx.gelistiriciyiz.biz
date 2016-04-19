@@ -3,14 +3,17 @@
         <h1><%= t 'messages.archive' %></h1>
     </section>
     <section class="index">
-        <h3 class="text">
+        <h2>
             <% if page_type == "month" %>
-                <%= I18n.l Date.new(year, month, 1), :format => "%B %Y" %>
+                <%
+                month_name = I18n.l Date.new(year, month, 1), :format => "%B"
+                year_value = I18n.l Date.new(year, month, 1), :format => "%Y"
+                %>
+                <%= t('messages.posts_amount_by_month', month: month_name, year: year_value, count: articles.count) %>
             <% elsif page_type == "year" %>
-                <%= year %>
+                <%= year %> <%= t('messages.posts_amount_by_year', count: articles.count) %>
             <% end %>
-            , <%= t('messages.posts_amount', count: articles.count) %>
-        </h3>
+        </h2>
     </section>
 
     <%= partial "partials/list_archive", :locals => {

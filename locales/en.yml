@@ -229,5 +229,8 @@ en:
     posts_amount_by_year:
       one: "has <span>%{count}</span> post."
       other: "has <span>%{count}</span> posts."
+    posts_amount_by_month:
+      one: "%{month} %{year}, has <span>%{count}</span> post."
+      other: "%{month} %{year}, has <span>%{count}</span> posts."
     click_for_year_title: "Click for %{year} archive."
     click_for_year_of_month_title: "Click for %{month} %{year} archive"
