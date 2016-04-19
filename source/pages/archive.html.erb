@@ -1,22 +1,18 @@
-<article class="container">
-    <section class="index">
-        <h1>Arşiv</h1>
-    </section>
-    
+<article class="container archive">
+    <section class="index"><h1><%= t 'messages.archive' %></h1></section>
     <% page_articles.group_by {|x| x.date.year}.each do |year, articles_group_by_year| %>
-        <section class="index archive-list">
-            <h2><%= link_to "#{year} &mdash; [ #{articles_group_by_year.count} kayıt ]", blog_year_path(year), :title => "#{year} arşivi için tıklayın" %></h2>
-            <% articles_group_by_year.group_by {|y| y.date.month}.each do |month, articles_group_by_month| %>
-                <% month_name = I18n.l Date.new(year, month, 1), :format => "%B" %>
-                <h3><%= link_to "#{month_name} &mdash; [ #{articles_group_by_month.count} ]", blog_month_path(year, month), :title => "#{year} - #{month_name} arşivi için tıklayın" %></h3>
-                <ol>
-                <% articles_group_by_month.each do |article| %>
-                    <li><%= link_to article.title, article, :rel => "prefetch", :title => t('messages.click_for_details') %></li>
-                <% end %>
-                </ol>
-                <hr/>
-            <% end %>
+        <section class="index">
+            <h2><%= link_to "#{year} &raquo;", blog_year_path(year), :title => t('messages.click_for_year_title', year: year) %> <%= t('messages.posts_amount_by_year', count: articles_group_by_year.count) %></h2>
         </section>
+        
+        <% articles_group_by_year.group_by {|y| y.date.month}.each do |month, articles_group_by_month| %>
+            <% month_name = I18n.l Date.new(year, month, 1), :format => "%B" %>
+            <section class="index">
+                <h3><%= link_to "#{month_name}, #{year} &raquo; " + t('messages.posts_amount', count: articles_group_by_month.count), blog_month_path(year, month), :title => t('messages.click_for_year_of_month_title', year: year, month: month_name) %></h3>
+            </section>
+            <%= partial "partials/list_archive", :locals => {
+                :page_articles => articles_group_by_month,
+            } %>
+        <% end %>
     <% end %>
-    
 </article>

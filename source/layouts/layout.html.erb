@@ -40,8 +40,8 @@ end
                 <% if site[:logo] %><a class="brand" href="/"><%= image_tag site[:logo], :alt => "Logo" %></a><% end %>
                 <a href="/" class="home"><%= t('messages.home') %></a>
                 <% if site[:product] %><a href="<%= site[:product][:url] %>"><%= site[:product][:name] %></a><% end %>
-                <a href="/hakkinda/"><%= t('messages.about') %></a>
-                <a href="/arsiv/"><%= t('messages.archive') %></a>
+                <a href="/<%= t('messages.about').to_url %>/"><%= t('messages.about') %></a>
+                <a href="/<%= t('messages.archive').to_url %>/"><%= t('messages.archive') %></a>
             </nav>
 
             <% if site[:tag_line] or site[:product] %>
@@ -61,8 +61,8 @@ end
                 <% if site[:company] %><a href="<%= site[:company][:url] %>"><%= site[:company][:name] %></a> &middot;<% end %>
                 <a href="/"><%= t('messages.home') %></a> &middot;
                 <% if site[:product] %><a href="<%= site[:product][:url] %>"><%= site[:product][:name] %></a> &middot; <% end %>
-                <a href="/hakkinda/"><%= t('messages.about') %></a> &middot;
-                <a href="/arsiv/"><%= t('messages.archive') %></a>
+                <a href="/<%= t('messages.about').to_url %>/"><%= t('messages.about') %></a> &middot;
+                <a href="/<%= t('messages.archive').to_url %>/"><%= t('messages.archive') %></a>
             </nav>
         
             <nav class="social">

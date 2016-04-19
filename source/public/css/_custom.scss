@@ -9,24 +9,10 @@ article.tags {
     }
 }
 
-article.archive {
-    h1 {
-        color: saturate($accent, 80);
-    }
-}
-
 div.tags {
     margin-top: .8em;
     a {
         color: white;
-    }
-}
-
-section.archive-list {
-    h2 {
-        color: darken($accent, 10);
-        border-bottom: 2px solid darken($accent, 10);
-        padding-bottom: 4px;
     }
 }
 
@@ -55,4 +41,23 @@ section.archive-list {
         background-color: #1c699c;
         color: white;
     }
+}
+
+article.archive {
+  h2 {
+    color: lighten($text, 25);
+    span {
+      color: lighten($accent, 10);
+    }
+  }
+  
+  h3 {
+    margin-bottom: 2em;
+  }
+  h3.text {
+    span {
+      font-weight: 900;
+      color: $accent;
+    }
+  }
 }

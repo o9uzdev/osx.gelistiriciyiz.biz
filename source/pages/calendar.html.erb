@@ -1,24 +1,19 @@
 <article class="container archive">
     <section class="index">
-        <h1>
-        Arşiv &mdash;
-        <%
-        case page_type
-        when "month"
-        %>
-        <%= I18n.l Date.new(year, month, 1), :format => "%B %Y" %>
-        <%
-        when "year"
-        %>
-        <%= year %>
-        <%
-        end
-        %>
-        &mdash; [ <span><%= articles.count %></span> kayıt ]
-        </h1>
+        <h1><%= t 'messages.archive' %></h1>
+    </section>
+    <section class="index">
+        <h3 class="text">
+            <% if page_type == "month" %>
+                <%= I18n.l Date.new(year, month, 1), :format => "%B %Y" %>
+            <% elsif page_type == "year" %>
+                <%= year %>
+            <% end %>
+            , <%= t('messages.posts_amount', count: articles.count) %>
+        </h3>
     </section>
 
     <%= partial "partials/list_archive", :locals => {
-        :page_articles => page_articles,
+        :page_articles => articles,
     } %>
 </article>

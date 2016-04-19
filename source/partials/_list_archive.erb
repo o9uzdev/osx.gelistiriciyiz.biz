@@ -1,10 +1,21 @@
 <% page_articles.each_with_index do |article, i| %>
 <section class="index">
+    <%
+    author_email = site[:main_author][:email]
+    author_name = site[:main_author][:name]
+    
+    if article.metadata[:page]["author"]
+        author_email = article.metadata[:page]["author"]["email"] if article.metadata[:page]["author"]["email"]
+        author_name = article.metadata[:page]["author"]["name"] if article.metadata[:page]["author"]["name"]
+    end
+    %>
+    <img class="avatar" src="<%= gravatar_for(author_email) %>" />
     <div>
         <h2 class="title">
-            <%= link_to article.title, article, :rel => "prefetch", :title => t('messages.click_for_details') %>
+            <%= link_to article.title + " &raquo;", article, :rel => "prefetch", :title => t('messages.click_for_details') %>
         </h2>
         <div class="meta">
+            <%= t('messages.written_by') %>: <address><%= author_name %></address> &mdash;
             <time pubdate datetime="<%= article.date.xmlschema %>" title="<%= I18n.l article.date, :format => "%d %B %Y, %A %H:%M" %>"><%= I18n.l article.date, :format => "%d %B %Y, %A %H:%M" %></time>
         </div>
     </div>

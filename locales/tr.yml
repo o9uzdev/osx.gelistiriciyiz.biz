@@ -216,9 +216,14 @@ tr:
   messages:
     written_by: Yazan
     click_for_details: Detaylar için tıklayın
-    details: Detaylar
+    click_for_archive_list: Arşiv listesi için tıklayın
     about: Hakkında
     home: Anasayfa
+    archive: Arşiv
     previous_posts: ÖNCEKİLER
     next_posts: SONRAKİLER
-    archive: Arşiv
+    page_title_archive: Arşiv
+    posts_amount: "<span>%{count}</span> kayıt bulunuyor."
+    posts_amount_by_year: "yılında <span>%{count}</span> kayıt bulunuyor."
+    click_for_year_title: "%{year} yılı arşivi için tıklayın."
+    click_for_year_of_month_title: "%{year} yılı, %{month} ayı arşivi için tıklayın"

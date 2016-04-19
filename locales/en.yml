@@ -213,3 +213,21 @@ en:
       one: "kilometer"
       other: "kilometers"
     billion: "gazillion-distance"
+  messages:
+    written_by: Written By
+    click_for_details: Click for details
+    click_for_archive_list: Click for archive list
+    about: About
+    home: Home
+    archive: Archive
+    previous_posts: PREVIOUS
+    next_posts: NEXT
+    page_title_archive: Archive
+    posts_amount:
+      one: "has <span>%{count}</span> post."
+      other: "has <span>%{count}</span> posts."
+    posts_amount_by_year:
+      one: "has <span>%{count}</span> post."
+      other: "has <span>%{count}</span> posts."
+    click_for_year_title: "Click for %{year} archive."
+    click_for_year_of_month_title: "Click for %{month} %{year} archive"
