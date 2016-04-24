@@ -24,19 +24,21 @@ rake preview  # Ön izleme / geliştirme sunucusu
 
 ## Front-matter Değişkenleri
 
-    title: Başlık
-    subtitle: Alt Başlık (Opsiyonel)
-    published: false (Opsiyonel)
-    date: Tarih (YIL-AY-GÜN SAAT:DAKİKA)
-    tags: etiket,etiket,etiket (Opsiyonel)
-    cover: Fotoğraf (Opsiyonel)
-    
-    (Opsiyonel)
-    author:
-        name: "AD-SOYAD"
-        email: "E-POSTA"
-        link: "LİNK"
-        bio: "1 SATIR BİO"
+```yaml
+title: Başlık
+subtitle: Alt Başlık (Opsiyonel)
+published: false (Opsiyonel)
+date: Tarih (YIL-AY-GÜN SAAT:DAKİKA)
+tags: etiket,etiket,etiket (Opsiyonel)
+cover: Fotoğraf (Opsiyonel)
+
+(Opsiyonel)
+author:
+    name: "AD-SOYAD"
+    email: "E-POSTA"
+    link: "LİNK"
+    bio: "1 SATIR BİO"
+```
 
 **published: false**
 
@@ -152,8 +154,9 @@ site:
 
 ## config_custom.yaml
 
-Bu dosya `.gitignore`’dadır ve eğer Pull Request ile katkı yapıyorsanız,
-bu dosyada yazan bilgiler, sizin yaptığınız post’larda kullanılacaktır.
+Bu dosya `.gitignore`’dadır ve eğer aynı repo’da çalışıyorsanız, her kullanıcı
+kendi kopyasında bu dosyadan oluşturmalı ve `config.yaml` dosyasındaki `main_author`
+boş olmalıdır.
 
 ```yaml
 main_author:
@@ -163,12 +166,19 @@ main_author:
   bio: "Yazılım Geliştiricisi"
 ```
 
-## Güncellemeler
+## PULL REQUEST ile katkı
 
-**2016-04-03**
+Yaptığınız post dosyalarındaki front-matter alanındaki `author`;
 
-* `readme.md` düzenlendi.
-* `config.yaml` için iki yeni değişken: `disqus` ve `google_analytics`
+```yaml
+author:
+    name: "AD-SOYAD"
+    email: "E-POSTA"
+    link: "LİNK"
+    bio: "1 SATIR BİO"
+```
+
+mutlaka dolu olmalıdır.
 
 ## Lisans
 
