@@ -11,7 +11,8 @@ author:
   link: "http://tarikkavaz.com"
   bio: "Front-end / UI Geliştiricisi"
 ---
-OS X El Capitan'da Çöp kutusunu Finder menüsünden güvenli boşaltmak mümkün değil.;READ_MORE
+OS X El Capitan'da Çöp kutusunu Finder menüsünden güvenli boşaltmak mümkün 
+değil.READ_MORE
 
 Bu işlemi `srm` komutunu kullanarak yapabilirz.
 
@@ -29,7 +30,8 @@ srm -rmv /Users/tarik/.Trash/klasor/
 
 Tabiki `tarik` yerine kendi kullanıcı adını yazmayı unutmayın.
 
-Çöp kutusunda olmayan dosyalar için aynı komut geçerlidir. Yapmanız gereken tek şey dosya/klasörün adresini vermek
+Çöp kutusunda olmayan dosyalar için aynı komut geçerlidir. Yapmanız gereken 
+tek şey dosya/klasörün adresini vermek:
 
 ```bash
 srm -zsv /klasor/dosya.txt
