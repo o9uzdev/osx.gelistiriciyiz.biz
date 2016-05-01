@@ -3,6 +3,7 @@ require "bundler/setup"
 require "date"
 require "time"
 require "stringex"
+require "yaml"
 
 FILE_DATE_FORMAT = "%Y-%m-%d"
 POST_DATE_FORMAT = "%b %d, %Y %H:%M"
@@ -30,6 +31,16 @@ end
 
 desc "Yeni yazı ekle"
 task :post, [:post_title, :post_date] do |t, args|
+  
+  main_config = YAML.load_file('config.yaml')
+  main_author = main_config['site']['main_author']
+  
+  begin
+    custom_config = YAML.load_file('config_custom.yaml')
+    main_author = custom_config['main_author']
+  rescue Exception => e
+  end
+
   post_title = args[:post_title] ? args[:post_title] : "yeni-post"
   post_time = args[:post_date] ? Time.parse(args[:post_date]) : Time.now
   post_file = "source/posts/#{post_time.strftime(FILE_DATE_FORMAT)}-#{post_title.to_url}.md"
@@ -42,11 +53,11 @@ task :post, [:post_title, :post_date] do |t, args|
   output << "# subtitle: "
   output << "# published: false"
   output << "# cover: "
-  output << "# author:"
-  output << "#   name: "
-  output << "#   email:"
-  output << "#   link:"
-  output << "#   bio:"
+  output << "author:"
+  output << "  name: #{main_author['name']}"
+  output << "  email: #{main_author['email']}"
+  output << "  link: #{main_author['link']}"
+  output << "  bio: #{main_author['bio']}"
   output << "---"
   File.write post_file, output.join("\n")
 
