@@ -1,0 +1,18 @@
+---
+title: "Launchpad'deki uygulamaları yeniden sıralamak"
+date: May 12, 2016 09:00
+tags: launchpad, tweak
+cover: https://infinit.io/_/3egE8kp.png
+author:
+  name: "Oguz Olmez"
+  email: "ogzolmz@gmail.com"
+  link: "http://www.oguzolmez.com.tr"
+  bio: "Software Developer"
+---
+Launchpad'i resetleyerek uygulamaları yeniden sıralayabiliriz.READ_MORE
+
+```bash
+defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock
+```
+
+Bu işlemden sonra Dock’un kapanıp açıldığını göreceksiniz. Launchpad alfabetik olarak sıralandığını görebilirsiniz.
